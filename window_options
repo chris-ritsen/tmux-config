@@ -1,0 +1,34 @@
+
+# Window Options {{{
+
+# Names and titles {{{
+
+set-window-option -g automatic-rename off
+
+# Dead {{{
+
+# set-window-option -g set-titles on
+# set-window-option -g set-titles-string "#{window_name} #{pane_current_command}"
+
+#}}}
+
+#}}}
+
+# Mouse {{{
+
+# set-window-option -g mode-mouse on
+
+#}}}
+
+# Other {{{
+
+set-window-option -g aggressive-resize on
+set-window-option -g mode-keys "vi"
+set-window-option -g monitor-activity on
+set-window-option -g pane-base-index 1
+set-window-option -g xterm-keys on
+
+#}}}
+
+#}}}1
+

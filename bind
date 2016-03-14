@@ -1,0 +1,102 @@
+
+# unbind {{{1
+
+unbind-key C-b
+unbind-key q
+unbind-key [
+unbind-key p
+unbind-key t
+
+# }}}1
+
+# bindings {{{1
+
+bind-key -n C-PageDown next-window
+bind-key -n C-PageUp previous-window
+bind-key -r Down  resize-pane -D 2
+bind-key -r J swap-pane -D
+bind-key -r K swap-pane -U
+bind-key -r Left  resize-pane -L 2
+bind-key -r Right resize-pane -R 2
+bind-key -r Up resize-pane -U 2
+bind-key -t vi-copy 'v' begin-selection
+# bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'y' copy-pipe "cat | xclip -i -selection clipboard"
+bind-key C new-window
+bind-key M-x command-prompt
+bind-key R source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+bind-key S choose-tree -sw \;
+bind-key [ copy-mode
+bind-key ` select-window -t 0
+bind-key c new-window \; command-prompt "rename-window '%%'"
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+bind-key m select-pane -t 1
+bind-key n next-window
+bind-key c-n next-window
+bind-key c-j next-window
+bind-key c-k previous-window
+bind-key p previous-window
+bind-key c-p previous-window
+bind-key r respawn-pane
+bind-key s split-window -v
+bind-key v split-window -h
+bind-key w select-pane -t :.+
+bind-key y paste-buffer
+bind-key z resize-pane -Z
+
+bind-key o set-option mouse-mode off
+bind-key i set-option mouse-mode on
+
+# bind C-p run "tmux set-buffer \"$(redis-cli --raw zrevrange 'clipboard' 0 0)\"; tmux paste-buffer"
+# bind C-y run "tmux save-buffer - | redis-cli -x zadd 'clipboard' $(date +%s) 1>/dev/null"
+
+# prefix {{{2
+
+# Use ctrl-a
+
+# {{{
+
+set-option -g prefix C-a
+bind-key C-a send-prefix
+bind-key a send-prefix
+
+# }}}
+
+# {{{
+
+# Use ctrl-space
+
+# set-option -g prefix C-Space
+# set-option -g prefix2 C-a
+
+# bind C-Space copy-mode
+# bind Space copy-mode
+# bind-key Space send-prefix
+# bind-key a send-prefix
+
+# }}}
+
+# }}}2
+
+# }}}1
+
+# Dead {{{1
+
+# bind C-p run "tmux set-buffer \"$(DISPLAY=:0 xclip -o -selection primary)\"; tmux paste-buffer" 
+# bind C-y run "tmux save-buffer - | DISPLAY=:0 xclip -i -selection primary"
+# bind-key , command-prompt "rename-window '%%'"
+# bind-key -r , select-window -t :-
+# bind-key -r . select-window -t :+
+# bind-key -t vi-copy 'y' copy-pipe "redis-cli -x set status"
+# bind-key C-a last-window
+# bind-key C-a resize-pane -Z
+# bind-key C-v run "tmux set-buffer -- \"$(xclip -o -selection clipboard)\"; tmux paste-buffer"
+# bind-key Escape copy-mode
+# bind-key space last-window
+# bind-key w select-pane -n whatever # no prefix
+
+# }}}1
+

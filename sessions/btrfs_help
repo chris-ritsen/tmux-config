@@ -1,0 +1,32 @@
+
+# source files {{{1
+
+# .tmux.conf {{{2
+
+source-file "/home/chris/.tmux.conf"
+
+# }}}2
+
+# general session settings {{{2
+
+source-file "/home/chris/.config/tmux/session"
+
+# }}}2
+
+# }}}1
+
+# create session {{{1
+
+set-option -g set-remain-on-exit off
+set-window-option -g pane-base-index 1
+
+new-session -s btrfs -c "/home/chris" -n elinks "elinks 'https://btrfs.wiki.kernel.org/index.php/Main_Page' 'https://wiki.archlinux.org/index.php/Btrfs'"
+
+new-window -c "/home/chris" -n btrfs "man btrfs" 
+new-window -c "/home/chris" -n btrfs "man btrfs-subvolume" 
+new-window -c "/home/chris" -n mount "man mount" 
+
+select-window -t btrfs:1
+
+# }}}1
+

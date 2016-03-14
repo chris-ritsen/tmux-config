@@ -1,0 +1,47 @@
+
+# source files {{{1
+
+# .tmux.conf {{{2
+
+source-file "$HOME/.tmux.conf"
+
+# }}}2
+
+# general session settings {{{2
+
+source-file "$HOME/.config/tmux/session"
+
+# }}}2
+
+# }}}1
+
+# create session {{{1
+
+bind-key R respawn-window
+bind-key r respawn-pane -t :.2
+bind-key [ copy-mode -u -t :.2
+
+set-option -g default-terminal "screen-256color"
+set-option -g set-remain-on-exit on
+set-option -g status off
+
+new -s koans -n python -c "$HOME/Documents/projects/learn/python/python_koans/python3/koans/" "vim ."
+split-window -dv -c "$HOME/Documents/projects/learn/python/python_koans/python3/" "./contemplate_koans.py"
+new-window -n lisp -c "$HOME/Documents/projects/learn/lisp/koans/koans/" "vim ."
+split-window -dv -c "$HOME/Documents/projects/learn/lisp/koans/" "sbcl --script ./contemplate.lsp"
+new-window -n ruby -c "$HOME/Documents/projects/learn/ruby/koans/koans/" "vim ."
+split-window -dv -c "$HOME/Documents/projects/learn/ruby/koans/" "rake"
+
+new -s koans@laptop -t koans
+new -s koans@www -t koans
+
+set-option -g set-remain-on-exit off
+
+new-session -s tmux_help -c "$HOME" -n man "man tmux"
+
+# new-window -c "$HOME" -n commands "" 
+
+select-window -t tmux_help:1 # Show man page
+
+# }}}1
+

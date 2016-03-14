@@ -1,0 +1,20 @@
+
+source-file "/home/chris/.tmux.conf"
+
+bind-key R respawn-window
+
+set-option -g default-terminal "screen-256color"
+set-option -g set-remain-on-exit off
+set-option -g set-remain-on-exit on
+set-option -g status on
+
+set-option -g default-path "/home/chris/projects/ezpay"
+new-session -s ezpay -n dev "export PWD=/home/chris/projects/ezpay; vim" # Fix this
+new-window -c ~/projects/ezpay -n log "foreman start"
+new-window -c ~/projects/ezpay -n config "vim -p .env karma.conf.js Gruntfile.js bower.json package.json Procfile .bowerrc"
+split-window -c ~/projects/ezpay -v -p 50 -t log "karma start"
+
+new-session -s chris@ezpay -t ezpay
+
+select-window -t dev
+

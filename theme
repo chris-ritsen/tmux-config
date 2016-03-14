@@ -1,0 +1,20 @@
+
+# Options {{{1
+
+set-option -g status-justify "left" 
+set-option -g status-left '#(echo $HOST_SYMBOL)'
+set-option -g status-right "#(redis-cli --raw get battery) #[fg=colour238,bg=colour234,nobold]#[fg=colour245,bg=colour238] #(redis-cli --raw get org-clock-heading) #[fg=colour252]#[fg=colour235,bg=colour252,bold] %m-%d %H:%M "
+set-option -g window-status-current-format "#[fg=colour234,bg=colour39]#[fg=colour25,bg=colour39,noreverse,bold] #I #W #[fg=colour39,bg=colour234,nobold]"
+set-option -g window-status-format " #I " 
+set-option -g window-status-separator "" 
+set-option -g word-separators '-_@ .'
+
+# #}}}1
+
+# Dead {{{1
+
+# set-option -g status-left '#[fg=colour235,bg=colour252,bold] #S #[fg=colour252,bg=colour238,nobold]#[fg=colour245,bg=colour238,bold] #(whoami)@#h #[fg=colour238,bg=colour234,nobold]'
+# set-option -g window-status-format " #I #W " 
+
+# #}}}1
+

@@ -1,0 +1,24 @@
+
+source-file "/home/chris/.tmux.conf"
+
+bind-key R respawn-window
+
+set-option -g default-terminal "screen-256color"
+set-option -g set-remain-on-exit on
+set-option -g status off
+
+# new-window -c "/Media/Audio/" -n music "cmus"
+new-session -c "/Media/Audio" -s "audio" -n "audio" "man cmus"
+new-window -c "/Media/Audio/" -n "alsamixer" "alsamixer"
+new-window -c "/Media/Audio/" -n "cmus-remote" "man cmus-remote"
+new-window -c "/Media/Audio/" -n "cmus-tutorial" "man cmus-tutorial"
+new-window -c "/Media/Audio/" -n "flac2all" "man flac2all"
+new-window -c "/Media/Audio/" -n "id3tool" "man id3tool"
+new-window -c "/Media/Audio/" -n "ponymix" "man ponymix"
+new-window -c "/Media/Audio/" -n "stag" "man stag"
+
+new-window -c "/Media/Audio/" -n "monitor" ""
+split-window -t 9 -v "watch -tn10 '(ponymix --sink list --short; ponymix --sink-input list --short; ponymix list-cards --short; ponymix --source list --short; ponymix --source-output list --short) | sort -u'"
+
+select-window -t :1
+

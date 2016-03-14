@@ -1,0 +1,10 @@
+
+source-file "/home/chris/.tmux.conf"
+
+source-file "/home/chris/.config/tmux/sessions/listen.d/10-options"
+
+new-session -s listen -n listen -c "/Media/Audio/Voice/Ritsen.Chris" "vimpc"
+new-window            -n www    -c "/Media/Audio/Voice/Ritsen.Chris" "alsamixer"
+
+select-window -t listen:1
+

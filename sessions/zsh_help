@@ -1,0 +1,29 @@
+
+# source files {{{1
+
+# .tmux.conf {{{2
+
+source-file "/home/chris/.tmux.conf"
+
+# }}}2
+
+# general session settings {{{2
+
+source-file "/home/chris/.config/tmux/session"
+
+# }}}2
+
+# }}}1
+
+# create session {{{1
+
+set-option -g set-remain-on-exit off
+
+new-session -s zsh -c "/home/chris" -n man "man zshall"
+
+new-window -c "/home/chris" -n www "elinks http://zsh.sourceforge.net/Doc/Release/Functions.html" 
+
+select-window -t zsh:1 # Show man page
+
+# }}}1
+

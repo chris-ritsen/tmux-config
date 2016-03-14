@@ -1,0 +1,22 @@
+
+source-file "/home/chris/.tmux.conf"
+
+bind-key R respawn-window
+
+set-option -g default-terminal "screen-256color"
+set-option -g set-remain-on-exit on
+set-option -g status off
+
+new-session -s m2be -c "/srv/http/m2be" -n code "/home/chris/.scripts/name.zsh m2be; vim --servername M2BE -p -c 'autocmd VimLeavePre * mksession! /home/chris/.tmp/vim/m2be' -c 'silent! source /home/chris/.tmp/vim/m2be' -c 'silent execute \"!/home/chris.scripts/name.zsh m2be\"'"
+
+set-environment PWD /srv/http/m2be
+
+# new-window -c "/srv/http/m2be/" -n server "/home/chris/.scripts/name.zsh server; npm --silent start"
+# new-window -c "/srv/http/m2be/" -n test "/home/chris/.scripts/name.zsh test; zsh -c 'zsh -ic watch_make_test'"
+
+new-window -c "/srv/http/m2be/" -n watch "/home/chris/.scripts/name.zsh watch; PWD=/srv/http/m2be gulp watch"
+
+new-session -A -c "/srv/http/m2be" -s m2be@www -t m2be
+
+select-window -t m2be:1
+

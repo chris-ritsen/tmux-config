@@ -1,0 +1,31 @@
+
+# source files {{{1
+
+# .tmux.conf {{{2
+
+source-file "/home/chris/.tmux.conf"
+
+# }}}2
+
+# general session settings {{{2
+
+source-file "/home/chris/.config/tmux/session"
+
+# }}}2
+
+# }}}1
+
+# create session {{{1
+
+set-option -g set-remain-on-exit off
+
+new-session -s tmux_help -c "/home/chris" -n 'man' "man tmux"
+
+# set-window-option set-titles-string "tmux man page!"
+
+# new-window -c "/home/chris" -n commands "" 
+
+select-window -t tmux_help:1 # Show man page
+
+# }}}1
+

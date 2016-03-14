@@ -1,0 +1,36 @@
+
+source-file "/home/chris/.tmux.conf"
+
+bind-key R respawn-window
+set-option -g default-terminal "screen-256color"
+set-option -g set-remain-on-exit on
+set-option -g status off
+
+new-session -s admin -c "/home/chris/.documents/" -n notes "/home/chris/.scripts/name.zsh org; /usr/local/bin/vim --servername NOTES -c 'colorscheme default' -c 'setlocal noshowmode noshowmatch matchpairs=' -c 'silent execute \"!/home/chris/.scripts/name.zsh notes\"' -c 'execute \"normal zt\"'  notes +"
+
+# FIXME: this should not be here.
+
+set-environment MAIL "/Media/Mail"
+
+new-session -A -c "/home/chris" -s admin@www -t admin
+new-session -A -c "/home/chris" -s admin@laptop -t admin
+
+# FIXME: These lines are too long.
+
+new-window -c "/home/chris/.documents/" -n org "/home/chris/.scripts/name.zsh org; emacsclient gtd.org"
+# new-window -c "/home/chris/.documents/" -n org "/home/chris/.scripts/name.zsh org; emacsclient --create-frame --tty --eval '(org-agenda-list 1)'"
+new-window -c "/home/chris/" -n mail "export MAIL=/Media/Mail; /home/chris/.scripts/name.zsh mail; dtach -A /home/chris/.tmp/dtach/mutt $SHELL -c mutt -e 'push <limit>!~l<enter>'"
+new-window -c "/home/chris/" -n music "/home/chris/.scripts/name.zsh music; PULSE_PROP=media.role=music $SHELL -c mpc -q 2>/dev/null && vimpc || vimpc -h home -p 6600"
+new-window -c "/home/chris/" -n config "/home/chris/.scripts/name.zsh config; /usr/local/bin/vim  --servername CONFIG -c 'silent! source /home/chris/.tmp/vim/config' -c 'autocmd VimLeavePre * mksession! /home/chris/.tmp/vim/config' -p ~/.profile $VIMRC_PLUGIN_DIR/abbrev.vim ~/.Xresources ~/.config/lynx/lynx.cfg ~/.config/mpd/music.conf ~/.emacs ~/.inputrc ~/.irssi/config ~/.irssi/default.theme ~/.lynxrc ~/.mbsyncrc ~/.muttrc ~/.offlineimaprc ~/.screenrc ~/.slrnrc ~/.ssh/config ~/.tmux.conf ~/.vimrc ~/.xbindkeysrc ~/.xinitrc ~/.xmonad/xmonad.hs ~/.config/zsh/alias.zsh ~/.vimpcrc"
+new-window -c "/home/chris/" -n irc "/home/chris/.scripts/name.zsh irc; dtach -A /home/chris/.tmp/dtach/irssi $SHELL -c irssi --noconnect"
+new-window -c "/home/chris/" -n chat "/home/chris/.scripts/name.zsh chat; dtach -A /home/chris/.tmp/dtach/finch $SHELL -c finch --nologin"
+
+select-window -t admin:1
+select-window -t admin@laptop:1
+select-window -t admin@www:1
+
+# new-window -c "/home/chris" -n irc "/home/chris/.scripts/name.zsh irssi; dtach -A /home/chris/.tmp/dtach/irssi $SHELL -c irssi"
+# -c 'silent! source /home/chris/.tmp/vim/config'
+# -c 'autocmd VimLeavePre * mksession! /home/chris/.tmp/vim/config'
+# -c 'autocmd VimEnter,WinEnter * execute \"normal \\<C-w>=\"'
+
